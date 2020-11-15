@@ -11,7 +11,6 @@ const Pagination = (props) => {
     setPage(value)
     props.selectPage(value);
   }
-  console.log(props)
   if (!props.isReposListLoaded) {
     return <></>
   }
