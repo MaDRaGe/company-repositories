@@ -4,6 +4,13 @@ import { IRepository } from '../redux/types';
 import Repository from './Repository';
 import Loader from '@material-ui/core/CircularProgress';
 import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles({
+  root: {
+    display: 'flex'
+  },
+})
+
 
 export interface IRepositoryListProps {
   reposList: IRepository[];
@@ -12,6 +19,7 @@ export interface IRepositoryListProps {
 }
 
 const RepositoryList = (props: IRepositoryListProps) => {
+  const classes = useStyles();
   if (props.isLoadedSuccess === false) {
     return <MuiAlert severity="error">Loading repositories is failure</MuiAlert>  
   }
@@ -30,7 +38,7 @@ const RepositoryList = (props: IRepositoryListProps) => {
   })
   
   return (
-    <div>
+    <div className={classes.root}>
       {reposListView}
     </div>
   )

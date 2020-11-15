@@ -2,16 +2,19 @@ import * as React from 'react';
 import Input from '@material-ui/core/Input';
 import { connect } from 'react-redux';
 import { fetchCompanyRepos } from '../redux/actions/actions';
+import { makeStyles } from '@material-ui/core/styles';
 
-export interface ICompanySearchProps {
-
-}
-
+const useStyles = makeStyles({
+  companySearch: {
+    marginBottom: '20px'
+  }
+})
 
 const CompanySearch = (props) => {
   const [inputValue, setInputValue] = React.useState('');
+  const classes = useStyles();
   return (
-    <div>
+    <div className={classes.companySearch}>
       <form onSubmit={(event) => {
           event.preventDefault();
           props.fetchCompanyRepos(inputValue);
