@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Input from '@material-ui/core/Input';
 import { connect } from 'react-redux';
-import { fetchCompanyRepos } from '../redux/sagas/company';
+import { fetchCompanyRepos } from '../redux/actions/actions';
 
 export interface ICompanySearchProps {
 

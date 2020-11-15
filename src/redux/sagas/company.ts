@@ -1,12 +1,10 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-import {
-  COMPANY_REPOS_FETCHED_FAILURE,
-  COMPANY_REPOS_FETCHED_SUCCESS,
-  COMPANY_REPOS_FETCH_START,
-  SELECT_PAGINATION_PAGE,
-  IRepository,
-  CompanyActionTypes
-} from '../types';
+import { IRepository } from '../types';
+import { 
+  companyReposFetchSuccess, 
+  companyResosFetchStart,
+  companyReposFetchFailure
+} from '../actions/actions'
 import github from '../../api/github';
 import {
   FETCH_COMPANY_REPOS
@@ -31,39 +29,6 @@ function* fetchCompanyReposAsync(action) {
 
   } catch (e) {
     yield put(companyReposFetchFailure());
-  }
-}
-
-export const companyResosFetchStart = (): CompanyActionTypes => {
-  return {
-    type: COMPANY_REPOS_FETCH_START
-  }
-}
-
-export const companyReposFetchSuccess = (companyReposList: IRepository[]): CompanyActionTypes => {
-  return {
-    type: COMPANY_REPOS_FETCHED_SUCCESS,
-    payload: companyReposList
-  }
-}
-
-export const companyReposFetchFailure = (): CompanyActionTypes  => {
-  return {
-    type: COMPANY_REPOS_FETCHED_FAILURE
-  }
-}
-
-export const selectPaginationPage = (page): CompanyActionTypes => {
-  return {
-    type: SELECT_PAGINATION_PAGE,
-    payload: page
-  }
-}
-
-export const fetchCompanyRepos = (companyName) => {
-  return {
-    type: FETCH_COMPANY_REPOS,
-    payload: companyName
   }
 }
 
